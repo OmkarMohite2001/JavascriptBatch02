@@ -1,0 +1,74 @@
+Javascript oop
+
+Object oriented programming
+
+Abstraction
+polymorphisam
+inheritance
+Encapsulation
+
+what is class
+    class is blue  print of object 
+    There is no memory in class
+    whenever we create using new keyword object there memory will be given to object
+
+in javascript there is no oop language
+javascript is scripting language 
+
+but javascript accepts some features of oop 
+
+in javascript defines functions are called methods
+
+inside objct and class variables accessing we need this 
+
+constructor
+    in other oop languages constructor name as same class name 
+    special type method 
+
+    but in javascript we declare constructor keyword that defines constructor methotd
+
+    in other oop languages constructors
+    1.Default constructor
+    2.parameterized constructor
+    3.copy constructor
+    4.synthesized constructor
+
+    in javascript there are 2 types of constructor
+    1.Default
+    2.parameterized
+
+    without using let const and var keyword we can create variables in constructor using this keyword and also private variables using #
+
+
+what is Encapsulation
+
+     Binding character and behaviour together 
+     wrapping data and code together
+     hiding something from outside the world
+
+in Encapsulation  other languages provides access specifiers
+
+public private protected
+
+in javascript there are 2 access specifiers public and private
+by default public 
+but we need private cannot acceess outside
+#
+
+
+
+class defination
+   A Class is a user defined data type that binds data member and member function in single unit
+
+Abstraction
+    hiding something from outside the world
+    Abstraction is showing only necessary information and hiding internal complexity 
+
+
+    in javascript there have garbage collector
+
+inheritance
+
+Single Multiple Multilevel Hybrid Hierarchical
+
+inheritance super super method static

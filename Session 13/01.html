@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employ Details Form</title>
+
+    <style>
+        body {
+            background-color: rgb(156, 255, 255);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        button {
+            border: 1px solid gray;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: antiquewhite;
+            color: blueviolet;
+            font-size: 14px;
+            border-radius: 4px;
+            padding: 5px;
+            margin-top: 20px;
+            width: 90%;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(87, 179, 249);
+            color: rgb(253, 15, 15);
+        }
+
+        #dialog {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 40%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 2px solid rgb(36, 35, 35);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgb(212, 212, 111);
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background-color: azure;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgb(80, 147, 248);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input,
+        select {
+            width: 90%;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        span {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Add Employe</h2>
+
+        <form id="Emp_Det">
+            <label>Full Name</label> <span id="nameError"></span>
+            <input type="text" id="name">
+
+            <label>Email ID</label> <span id="emailError"></span>
+            <input type="email" id="email">
+
+            <label>Date of Birth</label> <span id="DOBError"></span>
+            <input type="Date" id="DOB">
+
+            <label>Role</label> <span id="roleError"></span>
+            <select id="role">
+                <option>Maneger</option>
+                <option>Employe</option>
+                <option>Trainer</option>
+                <option>Clark</option>
+            </select>
+
+            <button id="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="dialog">
+        <h3>Employe Details</h3>
+
+        <p id="dialogContent">
+
+        </p>
+
+        <button onclick="closedialog()">Close</button>
+    </div>
+
+    <script>
+        document.getElementById("Emp_Det").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let DOB = document.getElementById("DOB").value;
+            let role = document.getElementById("role").value;
+
+            document.getElementById("nameError").innerText = "";
+            document.getElementById("emailError").innerText = "";
+            document.getElementById("DOBError").innerText = "";
+            document.getElementById("roleError").innerText = "";
+
+            // Validations
+
+            let valid = true;
+            let age = AgeCalc();
+
+            if (name === "") {
+                document.getElementById("nameError").innerText = "Name is Required";
+                valid = false;
+            }
+            if (email === "") {
+                document.getElementById("emailError").innerText = "Email is Required";
+                valid = false;
+            }
+
+            if (DOB === "") {
+                document.getElementById("DOBError").innerText = "Date of Birth is Required";
+                valid = false;
+            }
+            else if (DOB != "" && age < 18 && age > 60) {
+                document.getElementById("DOBError").innerText = `Your Age is ${age}`;
+                valid = false;
+            }
+
+            if (role === "") {
+                document.getElementById("roleError").innerText = "Role of Employe Required";
+                valid = false;
+            }
+
+            if (valid) {
+
+                document.getElementById("dialogContent").innerHTML =
+
+                    "Name : " + name + "<br>" +
+                    "Email : " + email + "<br>" +
+                    "Date of Birth : " + DOB + "<br>" +
+                    "Role : " + role + "<br>";
+
+                document.getElementById("dialog").style.display = "block";
+            }
+        })
+
+        function closedialog() {
+            document.getElementById("dialog").style.display = "none";
+
+            ClearData();
+        }
+
+        function ClearData() {
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("DOB").value = "";
+            document.getElementById("role").value = "";
+        }
+
+        function AgeCalc() {
+            let Age = 0;
+
+            let DOB = document.getElementById("DOB").value;
+            let birthDate = new Date(DOB);
+            let DOByear = birthDate.getFullYear();
+            let DOB_Mounth = birthDate.getMonth();
+            let DOB_Date = birthDate.getDate();
+
+            let runDate = new Date();
+            let runyear = runDate.getFullYear();
+            let runMounth = runDate.getMonth();
+            let todayDate = runDate.getDate();
+
+            Age = runyear - DOByear;
+
+            if (runMounth < DOB_Mounth) {
+                Age--;
+            }
+            else if (runMounth === DOB_Mounth && todayDate < DOB_Date) {
+                Age--;
+            }
+
+            return Age;
+        }
+    </script>
+</body>
+
+</html>
