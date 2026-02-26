@@ -1,0 +1,86 @@
+Timers in javascript 
+and timers are functions of BOM
+
+1.setTimeout(function,delayInMilliseconds,optionsl1,optionsl2,optionsl3,....)
+2.setInterval(function,delayInMilliseconds,optionsl1,optionsl2,optionsl3,....)
+3.clearTimeout(id)
+4.clearInterval(id)
+
+setTimeout => setTimeout is after starting or calling this method some soconds execute their function
+setTimeout is in real life like alarm
+
+setInterval is used for validating in JWT or oath tokens 
+
+{withcredential:true}
+
+
+/////////////////Synchronous And asynchronous////////////////////
+
+
+Other wise 0 TYpe Kara...
+
+javascript is a Synchronous programming language
+javascript is line by line executing
+but in some function take time thats why javascript introdused async await 
+what is async await => promise 
+what is promise => promise      is like in real life vachan
+
+pending
+resolve reject
+
+javascript is single thread 
+
+
+javascript introduced promise
+
+promise is 3 stages
+1.pending => Initial stage 
+2. Fullfilled => Success (After resolve)
+3. Rejected => Fail (After Reject)
+
+ptomice syntax
+
+    let promise = new Promise(<function(resolve, reject){
+        if(success){
+            resolve("Succes");
+        }else{
+            reject("Error");
+        }
+    }>)
+
+in promise we need 3 keyword
+1.then  => success 
+2.catch =>  error 
+3.finally   => afetr success or error every time execute finally block 
+
+////Async And Await 
+
+async/await returs a promise or handle promise 
+
+modern concept of promise 
+
+async is used to function 
+
+await is waiting response of promise after recieving promise response await terminate
+
+Multiple await is waiting every await program or resplonse of api 
+like
+
+await fun1();
+await fun2();
+await fun3();
+
+// even whole day did not recieve data there are still waiting for response every await.
+
+exception handling / Error handling
+
+try catch finally
+
+when custom errors we want to show we need throw keyword
+
+In javascript built in Error object 
+
+In error object there are 3 parameters 
+1.message
+2.stack
+3.name  => Error 
